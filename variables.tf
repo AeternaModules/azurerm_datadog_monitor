@@ -29,7 +29,7 @@ EOT
     name                = string
     resource_group_name = string
     sku_name            = string
-    monitoring_enabled  = optional(bool, true)
+    monitoring_enabled  = optional(bool) # Default: true
     tags                = optional(map(string))
     datadog_organization = object({
       api_key           = string
