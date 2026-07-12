@@ -1,3 +1,7 @@
+output "datadog_monitors_id" {
+  description = "Map of id values across all datadog_monitors, keyed the same as var.datadog_monitors"
+  value       = { for k, v in azurerm_datadog_monitor.datadog_monitors : k => v.id }
+}
 output "datadog_monitors_datadog_organization" {
   description = "Map of datadog_organization values across all datadog_monitors, keyed the same as var.datadog_monitors"
   value       = { for k, v in azurerm_datadog_monitor.datadog_monitors : k => v.datadog_organization }
