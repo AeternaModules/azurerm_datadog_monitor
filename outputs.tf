@@ -4,12 +4,12 @@ output "datadog_monitors_id" {
 }
 output "datadog_monitors_datadog_organization" {
   description = "Map of datadog_organization values across all datadog_monitors, keyed the same as var.datadog_monitors"
-  value       = { for k, v in azurerm_datadog_monitor.datadog_monitors : k => v.datadog_organization if v.datadog_organization != null && length(v.datadog_organization) > 0 }
+  value       = { for k, v in azurerm_datadog_monitor.datadog_monitors : k => one(v.datadog_organization) if v.datadog_organization != null && length(v.datadog_organization) > 0 }
   sensitive   = true
 }
 output "datadog_monitors_identity" {
   description = "Map of identity values across all datadog_monitors, keyed the same as var.datadog_monitors"
-  value       = { for k, v in azurerm_datadog_monitor.datadog_monitors : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_datadog_monitor.datadog_monitors : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "datadog_monitors_location" {
   description = "Map of location values across all datadog_monitors, keyed the same as var.datadog_monitors"
@@ -41,6 +41,6 @@ output "datadog_monitors_tags" {
 }
 output "datadog_monitors_user" {
   description = "Map of user values across all datadog_monitors, keyed the same as var.datadog_monitors"
-  value       = { for k, v in azurerm_datadog_monitor.datadog_monitors : k => v.user if v.user != null && length(v.user) > 0 }
+  value       = { for k, v in azurerm_datadog_monitor.datadog_monitors : k => one(v.user) if v.user != null && length(v.user) > 0 }
 }
 
